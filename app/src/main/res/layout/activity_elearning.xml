@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Elearning.Elearning">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-Learning"
+            android:layout_marginLeft="20dp"
+            android:textSize="30dp"
+            android:fontFamily="@font/bungee"
+            android:textAllCaps="true"
+            />
+
+        <RelativeLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/round_bk2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Previous year papers"
+                android:textSize="30dp"
+                android:id="@+id/previous_year_papers"
+                android:padding="25dp"
+                android:fontFamily="@font/baloo"
+                />
+
+
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/round_bk2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:padding="25dp"
+               android:layout_centerInParent="true"
+                android:text="E-Books"
+                android:id="@+id/ebooks"
+                android:textSize="30dp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/round_bk2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:padding="25dp"
+                android:layout_centerInParent="true"
+                android:text="E-Notes"
+                android:id="@+id/eNotes"
+                android:textSize="30dp" />
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

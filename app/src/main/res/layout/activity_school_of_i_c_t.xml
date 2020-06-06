@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Noticeboard.SchoolOfICT">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/card3">
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:text="NoticeBoard"
+                android:padding="30dp"
+                android:fontFamily="@font/baloo"
+                android:textSize="30dp"/>
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/noticeboardicon"/>
+        </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="8dp"
+        android:id="@+id/cardict"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/notice_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/soict" />
+
+            <TextView
+                android:id="@+id/notice_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:lineHeight="15dp"
+                android:text="School of Ict"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp" />
+
+            <RatingBar
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rating="3.5" />
+
+            <TextView
+                android:id="@+id/notice_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Btech CSE,IT,ECE; MCA,BCA" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:text="Announcements"
+                android:fontFamily="@font/baloo"
+                android:textSize="20dp"/>
+
+        </RelativeLayout>
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_notice_ict_Announcements"
+            android:layout_width="350dp"
+            android:layout_height="200dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:text="Upcoming Events"
+                android:fontFamily="@font/baloo"
+                android:textSize="20dp"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_notice_ict_upcomingevents"
+            android:layout_width="350dp"
+            android:layout_height="200dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Deadlines"
+                android:fontFamily="@font/baloo"
+                android:textSize="20dp"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_notice_ict_Deadlines"
+            android:layout_width="350dp"
+            android:layout_height="200dp" />
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</ScrollView>

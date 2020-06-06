@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Categories.EmergencyServices"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/round_bk5"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Emergency Services"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:fontFamily="@font/baloo"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:gravity="center_horizontal" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/admin1"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="80dp"
+            android:background="@drawable/round_bk5">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/baloo"
+                android:padding="20dp"
+                android:text="Hostel Admin"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/call_hostelAdmin"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_call_black_24dp"
+                android:layout_marginRight="80dp"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/alert"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="80dp"
+            android:background="@drawable/round_bk5">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/baloo"
+                android:padding="20dp"
+                android:text="GBU Admin"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/call_admin"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_call_black_24dp"
+                android:layout_marginRight="80dp"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/alert"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="80dp"
+            android:background="@drawable/round_bk5">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/baloo"
+                android:padding="20dp"
+                android:text="Fire Services"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/call_Fireservices"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_call_black_24dp"
+                android:layout_marginRight="80dp"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/alert"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="80dp"
+            android:background="@drawable/round_bk5">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/baloo"
+                android:padding="10dp"
+                android:text="Health Services"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/call_healthservices"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_call_black_24dp"
+                android:layout_marginRight="80dp"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/alert"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/round_bk5">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/baloo"
+                android:padding="20dp"
+                android:text="Securities "
+                android:textSize="25dp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/call_securities"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_call_black_24dp"
+                android:layout_marginRight="80dp"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/alert"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+
+
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

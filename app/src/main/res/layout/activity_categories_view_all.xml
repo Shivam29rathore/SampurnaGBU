@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Categories.CategoriesViewAll"
+    android:background="@color/lightWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/back_presser_catviewall"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                android:padding="15dp"
+                android:layout_centerVertical="true"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search_black_24dp"
+                android:padding="15dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categories"
+            android:textSize="30dp"
+            android:fontFamily="@font/bungee"
+            android:textAllCaps="true"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="190dp"
+            >
+            <RelativeLayout
+                android:layout_margin="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/round_bk2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E- Learning"
+                    android:textSize="30dp"
+                    android:textColor="@color/black"
+                    android:padding="25dp"
+                    android:fontFamily="@font/baloo"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/expandall_elearning"
+                    android:padding="20dp"
+                    android:background="#0000"
+                    android:text="Expand All"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"/>
+
+
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/school_image"
+                android:layout_marginTop="-25dp"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="25dp"
+            android:elevation="8dp"
+            android:background="#0000">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/food_back">
+
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/categories_restaurant_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eatery"
+                    android:textSize="30dp"
+                    android:textColor="@color/white"
+                    android:padding="25dp"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/baloo"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:id="@+id/expandall_eatery"
+                    android:background="#0000"
+                    android:layout_alignParentRight="true"
+                    android:text="Expand All"
+                    android:textColor="@color/white"
+                    android:layout_alignParentBottom="true"/>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="190dp"
+            >
+            <RelativeLayout
+                android:layout_margin="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/round_bk5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Emergency services"
+                    android:textSize="22dp"
+                    android:textColor="@color/black"
+                    android:padding="15dp"
+                    android:fontFamily="@font/baloo"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/expandall_emergencyservices"
+                    android:padding="20dp"
+                    android:background="#0000"
+                    android:text="Expand All"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"/>
+
+
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/hospital_image"
+                android:layout_marginTop="-15dp"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="25dp"
+            android:elevation="10dp"
+            android:background="#0000">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/bk6">
+
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/results"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Results"
+                    android:textSize="30dp"
+                    android:textColor="@color/white"
+                    android:padding="25dp"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/baloo"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:id="@+id/expandall_results"
+                    android:background="#0000"
+                    android:layout_alignParentRight="true"
+                    android:text="Expand All"
+                    android:textColor="@color/white"
+                    android:layout_alignParentBottom="true"/>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="190dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="25dp"
+                android:background="@drawable/bk5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloo"
+                    android:padding="25dp"
+                    android:text="Grievances"
+                    android:textColor="@color/black"
+                    android:textSize="30dp" />
+
+                <Button
+                    android:id="@+id/expandall_grievances"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#0000"
+                    android:padding="20dp"
+                    android:text="Expand All"
+                    android:textColor="@color/black" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/grievances"
+                android:layout_marginTop="-4dp"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="25dp"
+            android:elevation="10dp"
+            android:background="#0000">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/round_bk2">
+
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/internals"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Internals"
+                    android:textSize="30dp"
+                    android:textColor="@color/white"
+                    android:padding="25dp"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/baloo"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:background="#0000"
+                    android:id="@+id/expandall_internals"
+                    android:layout_alignParentRight="true"
+                    android:text="Expand All"
+                    android:textColor="@color/white"
+                    android:layout_alignParentBottom="true"/>
+
+
+            </RelativeLayout>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="190dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="25dp"
+                android:background="@drawable/bk4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baloo"
+                    android:padding="25dp"
+                    android:text="Courses"
+                    android:textColor="@color/black"
+                    android:textSize="30dp" />
+
+                <Button
+                    android:id="@+id/expandall_coursestructure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#0000"
+                    android:padding="20dp"
+                    android:text="Expand All"
+                    android:textColor="@color/black" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/school_icon"
+                android:layout_marginTop="-4dp"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="25dp"
+            android:elevation="10dp"
+            android:background="#0000">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/bk6">
+
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/noticeboardicon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Noticeboard"
+                    android:textSize="30dp"
+                    android:textColor="@color/white"
+                    android:padding="25dp"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/baloo"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:background="#0000"
+                    android:id="@+id/expandall_noticeboard"
+                    android:layout_alignParentRight="true"
+                    android:text="Expand All"
+                    android:textColor="@color/white"
+                    android:layout_alignParentBottom="true"/>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="190dp"
+            >
+            <RelativeLayout
+                android:layout_margin="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/bk7">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Conveyance"
+                    android:textSize="30dp"
+                    android:textColor="@color/black"
+                    android:padding="25dp"
+                    android:fontFamily="@font/baloo"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:background="#0000"
+                    android:text="Expand All"
+                    android:id="@+id/expandall_conveyance"
+                    android:textColor="@color/black"
+                    android:layout_alignParentBottom="true"/>
+
+
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:src="@drawable/transport_image"
+                android:layout_marginTop="-50dp"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>
