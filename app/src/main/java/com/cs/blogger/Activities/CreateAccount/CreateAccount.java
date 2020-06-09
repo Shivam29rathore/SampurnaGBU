@@ -125,8 +125,9 @@ public class CreateAccount extends AppCompatActivity {
                                     databaseReference.child(username).setValue(users);
 
                                     //Send users to Login Screen
-                                    startActivity(new Intent(getApplicationContext(),Login.class));
-                                    finish();
+                                    Intent intent = new Intent(getApplicationContext(),VerifyOTP.class);
+
+                                    intent.putExtra("phoneNo",phoneNo);
 
 
                                 }
