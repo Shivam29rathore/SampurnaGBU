@@ -227,7 +227,7 @@ public class CreateAccount extends AppCompatActivity {
             passwordField.setError("Field can't be empty");
             return false;
         } else if (!val.matches(passwordVal)) {
-            passwordField.setError("Password too weak");
+            passwordField.setError("Password should have :\\n1) At least 1 upper case letter\\n 2) at least 1 special character\\n 3) No white spaces \\n 4) At least 4 characters  \");");
             return false;
         } else {
             passwordField.setError(null);
