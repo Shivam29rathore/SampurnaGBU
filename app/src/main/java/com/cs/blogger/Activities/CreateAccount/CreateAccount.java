@@ -28,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Shivam Singh Rathore on 17/05/20
- *
  */
 
 public class CreateAccount extends AppCompatActivity {
@@ -37,11 +36,9 @@ public class CreateAccount extends AppCompatActivity {
     private TextInputLayout emailField, Fullname, Username, Phoneno, passwordField;
     private ImageView image;
     private TextView logoName, SloganName;
-    private FirebaseDatabase database;
+    private ProgressBar mProgressbar;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
-    private ProgressBar mProgressbar;
-
 
 
     @Override
@@ -61,11 +58,6 @@ public class CreateAccount extends AppCompatActivity {
         backTologin = findViewById(R.id.back_to_login);
         createAccount = findViewById(R.id.createAccountC);
         mProgressbar = findViewById(R.id.progressbar3);
-
-        //Database initialisation (Firebase)
-        database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference().child("Users");
-        mAuth = FirebaseAuth.getInstance();
 
 
         backTologin.setOnClickListener(new View.OnClickListener() {
@@ -114,29 +106,38 @@ public class CreateAccount extends AppCompatActivity {
                         .addOnCompleteListener(CreateAccount.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (!task.isSuccessful()) {
-                                    Toast.makeText(CreateAccount.this, "Account creation failed!", Toast.LENGTH_SHORT).show();
-                                } else {
+                                if (task.isSuccessful()) {
                                     Toast.makeText(CreateAccount.this, "Account created!", Toast.LENGTH_SHORT).show();
-
                                     mProgressbar.setVisibility(View.GONE);
                                     // Saving Data to Firebase / Writing to DB
                                     Users users = new Users(fullname, username, emailString, pwd, phoneNo);
                                     databaseReference.child(username).setValue(users);
 
-                                    //Send users to Login Screen
-                                    Intent intent = new Intent(getApplicationContext(),VerifyOTP.class);
+                                    //Send users to Phoneno Verification screen.
 
-                                    intent.putExtra("phoneNo",phoneNo);
+                                    startActivity(new Intent(getApplicationContext(),Login.class));
+                                }
+                                else {
+                                    Toast.makeText(CreateAccount.this, "Account creation failed!!", Toast.LENGTH_SHORT).show();
 
+
+//                Intent intent = new Intent(getApplicationContext(), VerifyOTP.class);
+//                intent.putExtra("phoneNo", phoneNo);
+//                intent.putExtra("emailId", emailString);
+//                intent.putExtra("username", username);
+//                intent.putExtra("fullname", fullname);
+//                intent.putExtra("password", pwd);
+//                startActivity(intent);
 
                                 }
                             }
+
+
                         });
-
-
             }
+
         });
+
     }
 
 

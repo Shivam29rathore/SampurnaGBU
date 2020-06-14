@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,8 +25,10 @@ import com.cs.blogger.R;
  */
 public class SplashScreen extends AppCompatActivity {
 
+    private static int PROGRESS_TIME= 2000;
     private static int SPLASH_SCREEN = 5000;
     SharedPreferences sliderIntro;
+    ProgressBar mprogressbar;
 
     //Variables
 
@@ -53,6 +56,8 @@ public class SplashScreen extends AppCompatActivity {
         logo = findViewById(R.id.logotv);
         slogan = findViewById(R.id.slogantv);
         poweredSlogan = findViewById(R.id.powered);
+        mprogressbar = findViewById(R.id.progressBarSplash);
+        mprogressbar.setVisibility(View.INVISIBLE);
 
         icon.setAnimation(topanim);
         logo.setAnimation(bottomanim);
@@ -98,6 +103,21 @@ public class SplashScreen extends AppCompatActivity {
 
             }
         }, SPLASH_SCREEN);
+
+
+        // Task to display the ProgressBar
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                mprogressbar.setVisibility(View.VISIBLE);
+
+
+            }
+
+
+        }, PROGRESS_TIME);
+
 
 
     }

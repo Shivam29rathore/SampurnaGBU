@@ -15,23 +15,22 @@
       },
       "oauth_client": [
         {
-          "client_id": "196110316970-kqqk2e7lf5gl6sfmn9m2eb5tb1knegfr.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "196110316970-bgkp3d9ab1ig4n930vpklto4i7717tb2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cs.blogger",
+            "certificate_hash": "6c78c8f01ece0dc16232370a498ee9b9bdc1ed77"
+          }
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCOyRWjdpklZ2QvLeX3a42lLekx8YgBHk8"
+          "current_key": "AIzaSyBkzu5h9tV7XavUDeNr_63fQSDyzsR-hlc"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "196110316970-kqqk2e7lf5gl6sfmn9m2eb5tb1knegfr.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

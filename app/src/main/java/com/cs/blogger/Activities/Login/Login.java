@@ -174,7 +174,7 @@ public class Login extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), UserDashboard.class));
                             finish();
                         } else {
-                            Toast.makeText(Login.this, "Invalid Credentials!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             mProgressBar.setVisibility(View.GONE);
                         }
 

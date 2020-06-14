@@ -250,12 +250,12 @@
                         android:text="@string/notice_board_desc" />
 
                     <TextView
+                        android:id="@+id/notice_board_viewall"
                         android:layout_width="60dp"
                         android:layout_height="30dp"
-                        android:text="ViewAll"
-                        android:id="@+id/notice_board_viewall"
                         android:fontFamily="@font/baloo"
-                        android:padding="5dp" />
+                        android:padding="5dp"
+                        android:text="ViewAll" />
 
                 </LinearLayout>
 
@@ -263,11 +263,13 @@
                     android:id="@+id/featured_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="-10dp"
                     android:layout_toRightOf="@id/featured_background"
                     android:background="@color/home_background" />
 
 
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
