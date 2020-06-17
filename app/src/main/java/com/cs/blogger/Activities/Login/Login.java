@@ -60,6 +60,7 @@ public class Login extends AppCompatActivity {
         logoText = findViewById(R.id.logo_name);
         SloganText = findViewById(R.id.slogan_name);
         mProgressBar = findViewById(R.id.progressBar);
+        mProgressBar.setVisibility(View.INVISIBLE);
 
 
         // Login Authantication via Email and password
@@ -174,7 +175,7 @@ public class Login extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), UserDashboard.class));
                             finish();
                         } else {
-                            Toast.makeText(Login.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this,"Invalid  credentials", Toast.LENGTH_SHORT).show();
                             mProgressBar.setVisibility(View.GONE);
                         }
 

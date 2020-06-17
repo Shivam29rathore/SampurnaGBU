@@ -32,13 +32,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateAccount extends AppCompatActivity {
 
-    private Button createAccount, backTologin;
+    private Button gobtn, backTologin;
     private TextInputLayout emailField, Fullname, Username, Phoneno, passwordField;
     private ImageView image;
     private TextView logoName, SloganName;
     private ProgressBar mProgressbar;
-    private DatabaseReference databaseReference;
-    private FirebaseAuth mAuth;
 
 
     @Override
@@ -56,8 +54,9 @@ public class CreateAccount extends AppCompatActivity {
         Username = findViewById(R.id.userName);
         Phoneno = findViewById(R.id.phoneNo);
         backTologin = findViewById(R.id.back_to_login);
-        createAccount = findViewById(R.id.createAccountC);
+        gobtn = findViewById(R.id.createAccountC);
         mProgressbar = findViewById(R.id.progressbar3);
+        mProgressbar.setVisibility(View.INVISIBLE);
 
 
         backTologin.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +73,7 @@ public class CreateAccount extends AppCompatActivity {
                 pairs[3] = new Pair<View, String>(Username, "logo_username");
                 pairs[4] = new Pair<View, String>(passwordField, "password_tran");
                 pairs[5] = new Pair<View, String>(backTologin, "go_tran");
-                pairs[6] = new Pair<View, String>(createAccount, "login_createAccount_tran");
+                pairs[6] = new Pair<View, String>(gobtn, "login_createAccount_tran");
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(CreateAccount.this, pairs);
@@ -87,157 +86,161 @@ public class CreateAccount extends AppCompatActivity {
         });
 
 
-        createAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String emailString = emailField.getEditText().getText().toString();
-                final String pwd = passwordField.getEditText().getText().toString();
-                final String username = Username.getEditText().getText().toString();
-                final String fullname = Fullname.getEditText().getText().toString();
-                final String phoneNo = Phoneno.getEditText().getText().toString();
+        gobtn.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
+                                         final String emailString = emailField.getEditText().getText().toString();
+                                         final String pwd = passwordField.getEditText().getText().toString();
+                                         final String username = Username.getEditText().getText().toString();
+                                         final String fullname = Fullname.getEditText().getText().toString();
+                                         final String phoneNo = Phoneno.getEditText().getText().toString();
 
-                if (!validateName() | !validatePassword() | !validatePhoneno() | !validateEmail() | !validateUsername()) {
-                    return;
+                                         if (!validateName() | !validatePassword() | !validatePhoneno() | !validateEmail() | !validateUsername()) {
+                                             return;
+                                         }
+
+                                         mProgressbar.setVisibility(View.VISIBLE);
+
+//                mAuth.createUserWithEmailAndPassword(emailString, pwd)
+//                        .addOnCompleteListener(CreateAccount.this, new OnCompleteListener<AuthResult>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<AuthResult> task) {
+//                                if (task.isSuccessful()) {
+//                                    Toast.makeText(CreateAccount.this, "Account created!", Toast.LENGTH_SHORT).show();
+//                                    mProgressbar.setVisibility(View.GONE);
+//                                    // Saving Data to Firebase / Writing to DB
+//                                    Users users = new Users(fullname, username, emailString, pwd, phoneNo);
+//                                    databaseReference.child(username).setValue(users);
+
+                                         //Send users to Phoneno Verification screen.
+                                         Intent intent = new Intent(getApplicationContext(), VerifyOTP.class);
+                                         intent.putExtra("phoneNo", phoneNo);
+                                         intent.putExtra("emailId", emailString);
+                                         intent.putExtra("username", username);
+                                         intent.putExtra("fullname", fullname);
+                                         intent.putExtra("password", pwd);
+                                         startActivity(intent);
+
+
+                                     }
+
+                                 });
+    }
+//                                else {
+//                                    Toast.makeText(CreateAccount.this, "Account creation failed!!", Toast.LENGTH_SHORT).show();
+//
+//
+//
+////                                }
+//                            }
+//
+//
+//                        });
+//            }
+//
+//        });
+//
+//    }
+
+
+            private Boolean validateName() {
+
+                String val = Fullname.getEditText().getText().toString();
+
+                if (val.isEmpty()) {
+                    Fullname.setError("Field can't be empty");
+                    return false;
+                } else {
+                    Fullname.setError(null);
+                    Fullname.setErrorEnabled(false);
+                    return true;
                 }
 
-                mProgressbar.setVisibility(View.VISIBLE);
-
-                mAuth.createUserWithEmailAndPassword(emailString, pwd)
-                        .addOnCompleteListener(CreateAccount.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(CreateAccount.this, "Account created!", Toast.LENGTH_SHORT).show();
-                                    mProgressbar.setVisibility(View.GONE);
-                                    // Saving Data to Firebase / Writing to DB
-                                    Users users = new Users(fullname, username, emailString, pwd, phoneNo);
-                                    databaseReference.child(username).setValue(users);
-
-                                    //Send users to Phoneno Verification screen.
-
-                                    startActivity(new Intent(getApplicationContext(),Login.class));
-                                }
-                                else {
-                                    Toast.makeText(CreateAccount.this, "Account creation failed!!", Toast.LENGTH_SHORT).show();
-
-
-//                Intent intent = new Intent(getApplicationContext(), VerifyOTP.class);
-//                intent.putExtra("phoneNo", phoneNo);
-//                intent.putExtra("emailId", emailString);
-//                intent.putExtra("username", username);
-//                intent.putExtra("fullname", fullname);
-//                intent.putExtra("password", pwd);
-//                startActivity(intent);
-
-                                }
-                            }
-
-
-                        });
             }
 
-        });
+            private Boolean validateUsername() {
 
-    }
+                String val = Username.getEditText().getText().toString();
+                String noWhiteSpace = "\\A\\w{4,20}\\z";
 
+                if (val.isEmpty()) {
+                    Username.setError("Field can't be empty");
+                    return false;
+                } else if (val.length() >= 15) {
+                    Username.setError("Username too long");
+                    return false;
+                } else if (!val.matches(noWhiteSpace)) {
+                    Username.setError("White spaces not allowed");
+                    return false;
+                } else {
+                    Username.setError(null);
+                    Username.setErrorEnabled(false);
+                    return true;
+                }
+            }
 
-    private Boolean validateName() {
+            private Boolean validateEmail() {
 
-        String val = Fullname.getEditText().getText().toString();
+                String val = emailField.getEditText().getText().toString();
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-        if (val.isEmpty()) {
-            Fullname.setError("Field can't be empty");
-            return false;
-        } else {
-            Fullname.setError(null);
-            Fullname.setErrorEnabled(false);
-            return true;
+                if (val.isEmpty()) {
+                    emailField.setError("Field can't be empty");
+                    return false;
+                } else if (!val.matches(emailPattern)) {
+                    emailField.setError("Invalid EmailID");
+                    return false;
+                } else {
+                    emailField.setError(null);
+                    emailField.setErrorEnabled(false);
+                    return true;
+                }
+
+            }
+
+            private Boolean validatePhoneno() {
+
+                String val = Phoneno.getEditText().getText().toString();
+
+                if (val.isEmpty()) {
+                    Phoneno.setError("Field can't be empty");
+                    return false;
+                } else {
+                    Phoneno.setError(null);
+                    Phoneno.setErrorEnabled(false);
+                    return true;
+                }
+
+            }
+
+            private Boolean validatePassword() {
+
+                String val = passwordField.getEditText().getText().toString();
+                String passwordVal = "^" +
+                        //"(?=.*[0-9])" +         //at least 1 digit
+                        //"(?=.*[a-z])" +         //at least 1 lower case letter
+                        "(?=.*[A-Z])" +         //at least 1 upper case letter
+                        "(?=.*[a-zA-Z])" +      //any letter
+                        "(?=.*[@#$%^&+=])" +    //at least 1 special character
+                        "(?=\\S+$)" +           //no white spaces
+                        ".{4,}" +               //at least 4 characters
+                        "$";
+
+                if (val.isEmpty()) {
+                    passwordField.setError("Field can't be empty");
+                    return false;
+                } else if (!val.matches(passwordVal)) {
+                    passwordField.setError("Password should have :\\n1) At least 1 upper case letter\\n 2) at least 1 special character\\n 3) No white spaces \\n 4) At least 4 characters  \");");
+                    return false;
+                } else {
+                    passwordField.setError(null);
+                    passwordField.setErrorEnabled(false);
+                    return true;
+                }
+
+            }
         }
 
-    }
-
-    private Boolean validateUsername() {
-
-        String val = Username.getEditText().getText().toString();
-        String noWhiteSpace = "\\A\\w{4,20}\\z";
-
-        if (val.isEmpty()) {
-            Username.setError("Field can't be empty");
-            return false;
-        } else if (val.length() >= 15) {
-            Username.setError("Username too long");
-            return false;
-        } else if (!val.matches(noWhiteSpace)) {
-            Username.setError("White spaces not allowed");
-            return false;
-        } else {
-            Username.setError(null);
-            Username.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private Boolean validateEmail() {
-
-        String val = emailField.getEditText().getText().toString();
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
-        if (val.isEmpty()) {
-            emailField.setError("Field can't be empty");
-            return false;
-        } else if (!val.matches(emailPattern)) {
-            emailField.setError("Invalid EmailID");
-            return false;
-        } else {
-            emailField.setError(null);
-            emailField.setErrorEnabled(false);
-            return true;
-        }
-
-    }
-
-    private Boolean validatePhoneno() {
-
-        String val = Phoneno.getEditText().getText().toString();
-
-        if (val.isEmpty()) {
-            Phoneno.setError("Field can't be empty");
-            return false;
-        } else {
-            Phoneno.setError(null);
-            Phoneno.setErrorEnabled(false);
-            return true;
-        }
-
-    }
-
-    private Boolean validatePassword() {
-
-        String val = passwordField.getEditText().getText().toString();
-        String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                "(?=.*[A-Z])" +         //at least 1 upper case letter
-                "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{4,}" +               //at least 4 characters
-                "$";
-
-        if (val.isEmpty()) {
-            passwordField.setError("Field can't be empty");
-            return false;
-        } else if (!val.matches(passwordVal)) {
-            passwordField.setError("Password should have :\\n1) At least 1 upper case letter\\n 2) at least 1 special character\\n 3) No white spaces \\n 4) At least 4 characters  \");");
-            return false;
-        } else {
-            passwordField.setError(null);
-            passwordField.setErrorEnabled(false);
-            return true;
-        }
-
-    }
 
 
-}
 

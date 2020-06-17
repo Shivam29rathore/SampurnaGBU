@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.chaos.view.PinView;
 import com.cs.blogger.Activities.Dashboards.UserDashboard;
 import com.cs.blogger.Activities.Login.Login;
+import com.cs.blogger.Model.Users;
 import com.cs.blogger.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,6 +42,7 @@ public class VerifyOTP extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verify_o_t_p);
 
         pinView = findViewById(R.id.pinview_verify);
@@ -53,12 +56,7 @@ public class VerifyOTP extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-
         String phoneNo = getIntent().getStringExtra("phoneNo");
-        String emailID = getIntent().getStringExtra("emailId");
-        String username = getIntent().getStringExtra("username");
-        String fullname = getIntent().getStringExtra("fullname");
-        String password = getIntent().getStringExtra("password");
 
         sendVerificationCodetoUser(phoneNo);
 
@@ -92,9 +90,9 @@ public class VerifyOTP extends AppCompatActivity {
 
     }
 
-
+    //This function will execute everytime, it is for the manual entry of the code.
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-        //This function will execute everytime, it is for the manual entry of the code.
+
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
@@ -102,9 +100,11 @@ public class VerifyOTP extends AppCompatActivity {
             verificationCodebySystem = s;
         }
 
+
+        // This method is for automatic entry of code.
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-            // This method is for automatic entry of code.
+
             String code = phoneAuthCredential.getSmsCode();
 
             if (code != null) {
@@ -117,7 +117,6 @@ public class VerifyOTP extends AppCompatActivity {
         }
 
 
-
         @Override
         public void onVerificationFailed(FirebaseException e) {
 
@@ -126,19 +125,31 @@ public class VerifyOTP extends AppCompatActivity {
         }
     };
 
-    private void signInUserByCredentials(PhoneAuthCredential credential) {
+    private void createAccount(String emailId, String password) {
+
 
         mAuth = FirebaseAuth.getInstance();
 
-        mAuth.signInWithCredential(credential)
+        mAuth.createUserWithEmailAndPassword(emailId, password)
                 .addOnCompleteListener(VerifyOTP.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            Toast.makeText(getApplicationContext(), "Account created successfully!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), Login.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            Toast.makeText(VerifyOTP.this,"Account created successfully!", Toast.LENGTH_SHORT).show();
+
+                            String phoneNo = getIntent().getStringExtra("phoneNo");
+                            String emailID = getIntent().getStringExtra("emailId");
+                            String username = getIntent().getStringExtra("username");
+                            String fullname = getIntent().getStringExtra("fullname");
+                            String password = getIntent().getStringExtra("password");
+
+                           // Saving Data to Firebase / Writing to DB
+                                    Users users = new Users(fullname, username, emailID, password, phoneNo);
+                                    databaseReference.child(username).setValue(users);
+
+                            Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
+                          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         } else {
                             Toast.makeText(VerifyOTP.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -150,9 +161,35 @@ public class VerifyOTP extends AppCompatActivity {
     public void verifyCode(String codeByuser) {
 
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCodebySystem, codeByuser);
-        signInUserByCredentials(credential);
+        String emailID = getIntent().getStringExtra("emailId");
+        String password = getIntent().getStringExtra("password");
+
+        createAccount(emailID, password);
+
+//        signInUserByCredentials(credential);
 
     }
+
+//    private void signInUserByCredentials(PhoneAuthCredential credential) {
+//
+//        mAuth = FirebaseAuth.getInstance();
+//
+//        mAuth.signInWithCredential(credential)
+//                .addOnCompleteListener(VerifyOTP.this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//
+//                            Toast.makeText(getApplicationContext(), "Verification completed", Toast.LENGTH_SHORT).show();
+//                            Intent intent = new Intent(getApplicationContext(), Login.class);
+//                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                            startActivity(intent);
+//                        } else {
+//                            Toast.makeText(VerifyOTP.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//    }
 
 
 }
